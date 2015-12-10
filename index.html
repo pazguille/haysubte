@@ -47,18 +47,9 @@
         width: 66px;
       }
 
-      .lines-nav:hover {
-        height:100%;
-      }
-
-      .lines-nav:hover .first_circle {
-        bottom: 64px;
-        visibility: visible;
-      }
-
-      .lines-nav:hover .third_circle {
-        bottom: 126px;
-        visibility: visible;
+      .lines-nav:hover .btn {
+        transform: scale(0.8);
+        opacity: 1;
       }
 
       .btn {
@@ -77,40 +68,62 @@
         box-sizing: content-box;
         text-align: center;
         cursor: pointer;
-        position: absolute;
-        bottom: 0;
-        visibility: hidden;
-        -webkit-transition: all 0.2s linear;
-        -moz-transition: all 0.2s linear;
-        -ms-transition: all 0.2s linear;
-        transition: all 0.2s linear;
-        transform: scale(0.9);
+        -webkit-transition: all 120ms cubic-bezier(.25,.25,0,1);
+        -moz-transition: all 120ms cubic-bezier(.25,.25,0,1);
+        -ms-transition: all 120ms cubic-bezier(.25,.25,0,1);
+        transition: all 120ms cubic-bezier(.25,.25,0,1);
+        transform: scale(0.4);
+        opacity: 0;
       }
 
       .line--active {
-        z-index: 12;
-        visibility: visible;
-        transform: scale(1);
+        transform: scale(1) !important;
+        visibility:visible;
+        opacity: 1;
+        margin-top: 5px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .line--opened {
+        position: relative;
+        z-index: 1;
+        font-size: 0;
+        opacity: 1;
+        border:none;
+        -webkit-transition: transform 3s cubic-bezier(.25,.25,0,1);
+        transition: transform 3s cubic-bezier(.25,.25,0,1);
+        transform: scale(99) !important;
       }
 
       .line--A {
         background-color: #039BE5;
+        -webkit-transition-delay: 50ms;
+        transition-delay: 50ms;
       }
 
       .line--B {
         background-color: #F82045;
+        -webkit-transition-delay: 40ms;
+        transition-delay: 40ms;
       }
 
       .line--C {
         background-color: #1565C0;
+        -webkit-transition-delay: 30ms;
+        transition-delay: 30ms;
       }
 
       .line--D {
         background-color: #00856E;
+        -webkit-transition-delay: 20ms;
+        transition-delay: 20ms;
       }
 
       .line--E {
         background-color: #673AB7;
+        -webkit-transition-delay: 10ms;
+        transition-delay: 10ms;
       }
 
       .line--H {
@@ -122,12 +135,17 @@
   <body>
 
     <div class="line line--B">
-      <div class="status">Normal</div>
+      <!-- <div class="status">Normal</div> -->
     </div>
     <nav class="lines-nav">
-      <button class="btn line--A first_circle">A</button>
-      <button class="btn line--B line--active second_circle">B</button>
-      <button class="btn line--C third_circle">C</button>
+      <div class="lines-btns">
+        <button class="btn line--A">A</button>
+        <button class="btn line--B">B</button>
+        <button class="btn line--C">C</button>
+        <button class="btn line--D">D</button>
+        <button class="btn line--E">E</button>
+        <button class="btn line--H">H</button>
+      </div>
       <!-- <div>
         <button class="btn line--A">A</button>
         <button class="btn line--B">B</button>
@@ -137,9 +155,32 @@
         <button class="btn line--H">H</button>
       </div>
       <button class="btn line--B">B</button> -->
+      <button class="btn line--B line--active">B</button>
     </nav>
     <script>
+      var $active = null;
+      var $line = document.querySelector('.line');
+      var $activeLine = document.querySelector('.line--active');
 
+
+      document.querySelector('.lines-btns').addEventListener('click', function(eve) {
+        if ($active) {
+          $active.classList.remove('line--opened');
+        }
+
+        $active = eve.target;
+
+        $activeLine.classList.remove('line--B');
+        $activeLine.classList.add('line--E');
+        $activeLine.innerHTML = 'E';
+
+        $active.addEventListener('transitionend', function() {
+          $line.classList.remove('line--B');
+          $line.classList.add('line--E');
+          $active.classList.remove('line--opened');
+        }, false);
+        $active.classList.add('line--opened');
+      });
     </script>
   </body>
 </html>

@@ -1,0 +1,37 @@
+{
+  "name": "haysubte",
+  "version": "1.0.0",
+  "description": "PWA para ver el estado del Subte.",
+  "main": "index.js",
+  "scripts": {
+    "start-dev": "NODE_ENV=development nodemon ./index.js",
+    "start": "NODE_ENV=production node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pazguille/haysubte.git"
+  },
+  "author": "Guille Paz <guille87paz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pazguille/haysubte/issues"
+  },
+  "homepage": "https://github.com/pazguille/haysubte#readme",
+  "dependencies": {
+    "casper": "0.1.1",
+    "compression": "1.6.2",
+    "express": "4.14.0",
+    "helmet": "3.1.0",
+    "hpp": "0.2.1",
+    "scraperjs": "1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "3.11.0",
+    "eslint-config-airbnb-base": "10.0.1",
+    "eslint-plugin-import": "2.2.0",
+    "istanbul": "0.4.5",
+    "mocha": "3.2.0",
+    "nodemon": "1.11.0"
+  },
+  "engine": ">=6.9.1"
+}

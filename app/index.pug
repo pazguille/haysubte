@@ -1,0 +1,107 @@
+doctype html
+html(lang='es')
+  head
+    meta(charset='utf-8')
+    meta(name='HandheldFriendly', content='True')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
+    link(rel='shortcut icon', href='favicon.ico')
+    title Estado del Subte
+    style.
+      html, body {
+      width: 100%;
+      height: 100%;
+      }
+      body {
+      margin: 0;
+      font: 100%/1.4em 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #474d51;
+      background-color: #f5f5f5;
+      -webkit-font-smoothing: antialiased;
+      }
+      ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 100%;
+      list-style: none;
+      }
+      li {
+      width: 100%;
+      border: 3px solid #fff;
+      display: flex;
+      padding: 10px;
+      margin: 5px;
+      box-sizing: border-box;
+      box-shadow: 0 0.125rem 0.313rem rgba( 0, 0, 0, .2 );
+      position: relative;
+      }
+      .line--A {
+      background-color: #039BE5;
+      }
+      .line--B {
+      background-color: #F82045;
+      }
+      .line--C {
+      background-color: #1565C0;
+      }
+      .line--D {
+      background-color: #00856E;
+      }
+      .line--E {
+      background-color: #673AB7;
+      }
+      .line--H {
+      background-color: #FDD835;
+      }
+      .badge {
+      display: inline-block;
+      font-size: 22px;
+      color: #fff;
+      border-radius: 50%;
+      border: 2px solid white;
+      padding: 0;
+      outline: 0;
+      width: 38px;
+      height: 38px;
+      line-height: 38px;
+      box-sizing: content-box;
+      text-align: center;
+      font-style: normal;
+      vertical-align: middle;
+      position: absolute;
+      left: 5px;
+      }
+      dl {
+      margin: 0 0 0 40px;
+      }
+      dt {
+      position: absolute;
+      opacity: 0;
+      }
+      dd {
+      display: block;
+      margin: 0 10px 5px;
+      font-size: 14px;
+      }
+      .line-name {
+      font-weight: bold;
+      font-size: 18px;
+      }
+      .line-status {
+      text-transform: capitalize;
+      }
+  body
+    ul
+      each line, key in lines
+        li.line
+          i(class=`badge line--${key}`)= key
+          dl
+            dt Nombre
+            dd.line-name Linea #{key}
+            dt Estado
+            dd.line-status #{line.status}
+            if (line.status !== 'normal')
+              dt Descripción
+              dd.line-status-text #{line.text}

@@ -9,6 +9,7 @@ const helmet = require('helmet');
 const hpp = require('hpp');
 const config = require('./config');
 const api = require('./api');
+const pages = require('./app');
 
 /**
  * Create app and router
@@ -26,6 +27,11 @@ app.use(hpp());
  * Add router
  */
 app.use('/api', api);
+
+/**
+ * Mount template router
+ */
+app.use('/', pages);
 
 /**
  * Cluster

@@ -41,25 +41,25 @@ app.use('/', pages);
 /**
  * Cluster
  */
-// if (cluster.isMaster) {
-//   for (let i = 0; i < numCPUs; i += 1) {
-//     cluster.fork();
-//   }
-//
-//   cluster.on('online', (worker) => {
-//     console.log(`Worker ${worker.process.pid} is online`);
-//   });
-//
-//   cluster.on('exit', (worker) => {
-//     console.log(`Worker ${worker.process.pid} died`);
-//     console.log('Starting a new worker');
-//     cluster.fork();
-//   });
-// } else {
+if (cluster.isMaster) {
+  for (let i = 0; i < numCPUs; i += 1) {
+    cluster.fork();
+  }
+
+  cluster.on('online', (worker) => {
+    console.log(`Worker ${worker.process.pid} is online`);
+  });
+
+  cluster.on('exit', (worker) => {
+    console.log(`Worker ${worker.process.pid} died`);
+    console.log('Starting a new worker');
+    cluster.fork();
+  });
+} else {
   app.listen(config.server.port, () => {
     console.log(`App listening on port ${config.server.port}.`);
   });
-// }
+}
 
 /**
  * Handle unhandled exceptions

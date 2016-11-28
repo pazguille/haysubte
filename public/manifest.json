@@ -1,15 +1,15 @@
 {
-  "short_name": "HaySubte?",
-  "name": "HaySubte?",
+  "short_name": "Hay Subte?",
+  "name": "Hay Subte?",
   "icons": [
     {
-      "src": "https://cldup.com/uSHe7RQnQK.png",
+      "src": "/public/favicon-120.png",
       "sizes": "120x120",
       "type": "image/png"
     },
     {
-      "src": "https://cldup.com/uSHe7RQnQK.png",
-      "sizes": "150x150",
+      "src": "/public/favicon-precomposed.png",
+      "sizes": "180x180",
       "type": "image/png"
     }
   ],

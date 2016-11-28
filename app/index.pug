@@ -119,8 +119,12 @@ html(lang='es')
       position: absolute;
       right: 0;
       top: 0;
-      text-indent: -999px;
-      background: url('/refresh.png') no-repeat center center;
+      }
+      svg {
+      fill: white;
+      position: absolute;
+      top: 9px;
+      left: 9px;
       }
       .share-buttons {
       display: block;
@@ -142,7 +146,16 @@ html(lang='es')
     main
       header.header-main
         h1 ¿Hay Subte?
-        a.refresh(href='/') Actualizar
+        a.refresh(href='/')
+          svg#Capa_1(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', width='24px', height='24px', viewbox='0 0 612 612', xml:space='preserve')
+            g
+              g
+                path(d='M306,541.385c-86.833,0-162.674-47.007-203.466-116.963H75.676C118.681,507.866,205.679,564.923,306,564.923\
+                c135.063,0,245.977-103.428,257.864-235.385H612l-58.846-70.615l-58.847,70.615h45.924\
+                C528.415,448.479,428.047,541.385,306,541.385z')
+                path(d='M306,47.077c-126.919,0-232.513,91.329-254.663,211.846H0l58.846,70.615l58.846-70.615H75.323\
+                C97.143,151.494,192.121,70.615,306,70.615c76.877,0,145.138,36.838,188.096,93.848h28.764\
+                C476.606,93.777,396.765,47.077,306,47.077z')
       ul
         each line, key in lines
           li.line

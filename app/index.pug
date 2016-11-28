@@ -1,12 +1,15 @@
 doctype html
-html(lang='es')
+html(lang='es', manifest='cache.appcache')
   head
     meta(charset='utf-8')
     meta(name='HandheldFriendly', content='True')
     meta(name='apple-mobile-web-app-capable', content='yes')
     meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
-    link(rel='shortcut icon', href='favicon.ico')
-    title Estado del Subte
+    link(rel='manifest', href='/manifest.json')
+    link(rel='shortcut icon', href='https://cldup.com/uSHe7RQnQK.png')
+    link(rel='apple-touch-icon-precomposed', href='https://cldup.com/uSHe7RQnQK.png')
+    link(rel='apple-touch-icon-precomposed', sizes='120x120' href='https://cldup.com/uSHe7RQnQK.png')
+    title HaySubte? - Estado del Subte
     style.
       html, body {
       width: 100%;

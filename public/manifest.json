@@ -1,0 +1,18 @@
+{
+  "short_name": "HaySubte?",
+  "name": "HaySubte?",
+  "icons": [
+    {
+      "src": "https://cldup.com/uSHe7RQnQK.png",
+      "sizes": "120x120",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cldup.com/uSHe7RQnQK.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./",
+  "display": "minimal-ui"
+}

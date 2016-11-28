@@ -17,6 +17,11 @@ const pages = require('./app');
 const app = express();
 
 /**
+ * Set static directory
+ */
+app.use(express.static(__dirname + '/public'));
+
+/**
  * Add middlewares
  */
 app.use(compression());

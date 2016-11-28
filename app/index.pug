@@ -38,7 +38,7 @@ html(lang='es')
       border: 3px solid #fff;
       display: flex;
       padding: 10px;
-      margin: 5px;
+      margin: 4px 5px;
       box-sizing: border-box;
       box-shadow: 0 0.125rem 0.313rem rgba( 0, 0, 0, .2 );
       position: relative;
@@ -106,7 +106,21 @@ html(lang='es')
       margin: 0 0 5px;
       background: #c75d5d url(/favicon-120.png) no-repeat 7px center;
       background-size: 35px;
+      }
+      .header-main h1 {
+      margin: 0;
+      font-weight:normal;
       font-size: 15px;
+      }
+      .refresh {
+      display: block;
+      width: 42px;
+      height: 42px;
+      position: absolute;
+      right: 0;
+      top: 0;
+      text-indent: -999px;
+      background: url('/refresh.png') no-repeat center center;
       }
       .share-buttons {
       display: block;
@@ -126,7 +140,9 @@ html(lang='es')
       }
   body
     main
-      header.header-main ¿Hay Subte?
+      header.header-main
+        h1 ¿Hay Subte?
+        a.refresh(href='/') Actualizar
       ul
         each line, key in lines
           li.line

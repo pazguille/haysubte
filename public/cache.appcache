@@ -1,0 +1,13 @@
+CACHE MANIFEST
+
+# Version: 0.0.6
+
+# Main page
+/
+
+# Images
+/favicon.png
+/startup.png
+
+NETWORK:
+/api

@@ -1,6 +1,9 @@
 # ¿HaySubte?
 
-> 🚊 Web App para ver el Estado del Subte. https://haysubte.now.sh
+> 🚊 Web App para ver el Estado del Subte.
+
+- Web App: https://haysubte.now.sh
+- Servicio: https://haysubte.now.sh/api
 
 # Screenshots
 

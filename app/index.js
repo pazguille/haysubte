@@ -16,6 +16,8 @@ const view = new ViewResolver(templatePath);
  */
 app.get('/', (req, res) => {
   getLinesStatus().then((lines) => {
+    // 5 minutes
+    // res.header('Cache-Control', 'public, max-age=300000');
     view.render({ lines }, res);
   });
 });

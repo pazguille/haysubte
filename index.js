@@ -10,6 +10,7 @@ const hpp = require('hpp');
 const config = require('./config');
 const api = require('./api');
 const pages = require('./app');
+const job = require('./api/job');
 
 /**
  * Create app and router
@@ -42,6 +43,9 @@ app.use('/', pages);
  * Cluster
  */
 if (cluster.isMaster) {
+   // Starts to run job
+  job.start();
+
   for (let i = 0; i < numCPUs; i += 1) {
     cluster.fork();
   }

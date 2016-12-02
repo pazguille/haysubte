@@ -2,6 +2,12 @@
  * Module dependencies
  */
 const { StaticScraper } = require('scraperjs');
+const LRUCache = require('stale-lru-cache-cluster');
+
+/**
+ * Create cache
+ */
+const cache = LRUCache();
 
 /**
  * Metro lines
@@ -21,18 +27,37 @@ function scrapLinesStatus($) {
       text: $line.text().trim(),
     };
   });
+  cache.set('lines', response);
   return response;
+}
+
+/**
+ * getLinesStatusOnline
+ */
+function getLinesStatusOnline() {
+  StaticScraper.create('http://www.metrovias.com.ar/')
+    .scrape(scrapLinesStatus);
 }
 
 /**
  * getLinesStatus
  */
 function getLinesStatus() {
-  return StaticScraper.create('http://www.metrovias.com.ar/')
-    .scrape(scrapLinesStatus);
+  return cache.has('lines')
+    .then((exists) => {
+      if (exists) {
+        return cache.get('lines');
+      }
+      return getLinesStatusOnline();
+    });
 }
 
 /**
  * Expose getLinesStatus
  */
-module.exports = getLinesStatus;
+exports = module.exports = getLinesStatus;
+
+/**
+ * Expose getLinesStatusOnline
+ */
+exports.getLinesStatusOnline = getLinesStatusOnline;

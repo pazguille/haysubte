@@ -5,6 +5,16 @@ const api = require('express').Router();
 const getLinesStatus = require('./linesStatus');
 
 /**
+ * Enable CORS
+ */
+api.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
+/**
  * Add endpoint /api
  */
 api.get('/', (req, res) => {

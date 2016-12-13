@@ -27,8 +27,8 @@
     "scraperjs": "1.2.0"
   },
   "devDependencies": {
-    "eslint": "3.11.0",
-    "eslint-config-airbnb-base": "10.0.1",
+    "eslint": "3.12.1",
+    "eslint-config-airbnb-base": "11.0.0",
     "eslint-plugin-import": "2.2.0",
     "istanbul": "0.4.5",
     "mocha": "3.2.0",

@@ -21,13 +21,13 @@
     "casper": "0.1.1",
     "compression": "1.6.2",
     "express": "4.14.0",
-    "helmet": "3.1.0",
+    "helmet": "3.2.0",
     "hpp": "0.2.1",
     "pug": "2.0.0-beta6",
     "scraperjs": "1.2.0"
   },
   "devDependencies": {
-    "eslint": "3.12.1",
+    "eslint": "3.12.2",
     "eslint-config-airbnb-base": "11.0.1",
     "eslint-plugin-import": "2.2.0",
     "istanbul": "0.4.5",

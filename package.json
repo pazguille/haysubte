@@ -20,14 +20,14 @@
   "dependencies": {
     "casper": "0.1.1",
     "compression": "1.6.2",
-    "express": "4.14.0",
-    "helmet": "3.2.0",
+    "express": "4.14.1",
+    "helmet": "3.4.0",
     "hpp": "0.2.1",
-    "pug": "2.0.0-beta6",
+    "pug": "2.0.0-beta9",
     "scraperjs": "1.2.0"
   },
   "devDependencies": {
-    "eslint": "3.12.2",
+    "eslint": "3.15.0",
     "eslint-config-airbnb-base": "11.1.0",
     "eslint-plugin-import": "2.2.0",
     "istanbul": "0.4.5",

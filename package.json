@@ -21,7 +21,7 @@
     "casper": "0.1.1",
     "compression": "1.6.2",
     "express": "4.14.1",
-    "helmet": "3.4.0",
+    "helmet": "3.4.1",
     "hpp": "0.2.1",
     "pug": "2.0.0-beta9",
     "scraperjs": "1.2.0"

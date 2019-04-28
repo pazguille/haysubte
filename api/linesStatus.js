@@ -1,7 +1,8 @@
 /**
  * Module dependencies
  */
-const { StaticScraper } = require('scraperjs');
+const https = require('https');
+const cheerio = require('cheerio');
 
 /**
  * Metro lines
@@ -12,24 +13,58 @@ const lines = ['A', 'B', 'C', 'D', 'E', 'H'];
 /**
  * Scrap lines and built a response
  */
-function scrapLinesStatus($) {
-  const response = {};
-  lines.forEach((line) => {
-    const $line = $(`#status-line-${line}-container`);
-    response[line] = {
-      status: $line.attr('class').trim().split(' ')[1] || 'normal',
-      text: $line.text().trim(),
+function scrapLinesStatus(html) {
+  const status = {};
+  const $ = cheerio.load(html);
+  const linesNodes = $('.lineas');
+  lines.forEach((key, index) => {
+    const line = linesNodes.get(index);
+    const text = $(line).text().trim().toLowerCase();
+    status[key] = {
+      text,
+      status: text,
     };
   });
-  return response;
+  return status;
 }
+
+/**
+ * getLinesConnection
+ */
+function getLinesConnection() {
+  return new Promise((resolve) => {
+    let data = '';
+    const req = https.request('https://www.metrovias.com.ar/estadolineas/signalr/negotiate?clientProtocol=2.0&connectionData=%5B%7B%22name%22%3A%22moveshape%22%7D%5D', (res) => {
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+      res.on('end', () => resolve(JSON.parse(data)));
+    });
+    req.end();
+  });
+}
+
 
 /**
  * getLinesStatus
  */
 function getLinesStatus() {
-  return StaticScraper.create('http://www.metrovias.com.ar/')
-    .scrape(scrapLinesStatus);
+  return getLinesConnection()
+    .then((connection) => {
+      return new Promise((resolve) => {
+        const req = https.request(`https://www.metrovias.com.ar/estadolineas/signalr/connect?transport=serverSentEvents&clientProtocol=2.0&connectionData=%5B%7B%22name%22%3A%22moveshape%22%7D%5D&tid=7&connectionToken=${encodeURIComponent(connection.ConnectionToken)}`, (res) => {
+          res.on('data', (chunk) => {
+            const data = chunk.toString();
+            if (data.includes('"M":[{')) {
+              req.destroy();
+              const response = JSON.parse(data.replace('data: ', ''));
+              resolve(scrapLinesStatus(response.M[0].A[0]));
+            }
+          });
+        });
+        req.end();
+      });
+    });
 }
 
 /**

@@ -18,13 +18,12 @@
   },
   "homepage": "https://github.com/pazguille/haysubte#readme",
   "dependencies": {
-    "casper": "0.1.1",
+    "cheerio": "1.0.0-rc.3",
     "compression": "1.6.2",
     "express": "4.14.1",
     "helmet": "3.6.0",
     "hpp": "0.2.2",
-    "pug": "2.0.0-rc.1",
-    "scraperjs": "1.2.0"
+    "pug": "2.0.0-rc.1"
   },
   "devDependencies": {
     "eslint": "3.19.0",

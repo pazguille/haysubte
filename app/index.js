@@ -16,6 +16,7 @@ const view = new ViewResolver(templatePath);
  */
 app.get('/', (req, res) => {
   getLinesStatus().then((lines) => {
+    console.log(lines);
     view.render({ lines }, res);
   });
 });

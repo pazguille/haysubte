@@ -31,7 +31,7 @@
     "eslint-plugin-import": "2.2.0",
     "istanbul": "0.4.5",
     "mocha": "3.3.0",
-    "nodemon": "1.11.0"
+    "nodemon": "1.19.0"
   },
   "engine": ">=6.9.1"
 }

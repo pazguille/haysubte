@@ -16,12 +16,13 @@ const lines = ['A', 'B', 'C', 'D', 'E', 'H'];
 function scrapLinesStatus(html) {
   const status = {};
   const $ = cheerio.load(html);
-  const linesNodes = $('.lineas');
+  const linesNodes = $('.row');
+  // const lastUpdate = $('.actualizacion').text().trim().toLowerCase();
   lines.forEach((key, index) => {
     const line = linesNodes.get(index);
     const text = $(line).text().trim().toLowerCase();
     status[key] = {
-      text,
+      text: text === 'normal' ? text : 'Con Problemas',
       status: text,
     };
   });

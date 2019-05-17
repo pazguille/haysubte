@@ -20,7 +20,7 @@
   "dependencies": {
     "cheerio": "1.0.0-rc.3",
     "compression": "1.6.2",
-    "express": "4.14.1",
+    "express": "4.17.0",
     "helmet": "3.6.0",
     "hpp": "0.2.2",
     "pug": "2.0.0-rc.1"

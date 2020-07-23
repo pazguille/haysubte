@@ -26,7 +26,6 @@ api.get('/', (req, res) => {
  */
 // eslint-disable-next-line no-unused-vars
 api.use((err, req, res, next) => {
-  console.error(err.stack);
   res.status(500).json({ status: 500 });
 });
 

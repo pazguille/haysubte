@@ -39,6 +39,11 @@ app.use('/api', api);
 app.use('/', pages);
 
 /**
+ * Port
+ */
+const port = process.env.PORT || config.server.port;
+
+/**
  * Cluster
  */
 if (cluster.isMaster) {
@@ -56,8 +61,8 @@ if (cluster.isMaster) {
     cluster.fork();
   });
 } else {
-  app.listen(config.server.port, () => {
-    console.log(`App listening on port ${config.server.port}.`);
+  app.listen(port, () => {
+    console.log(`App listening on port ${port}.`);
   });
 }
 

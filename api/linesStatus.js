@@ -35,7 +35,7 @@ function scrapLinesStatus(html) {
 function getLinesConnection() {
   return new Promise((resolve) => {
     let data = '';
-    const req = https.request('https://www.metrovias.com.ar/estadolineas/signalr/negotiate?clientProtocol=2.0&connectionData=%5B%7B%22name%22%3A%22moveshape%22%7D%5D', (res) => {
+    const req = https.request('https://aplicacioneswp.metrovias.com.ar/estadolineas/signalr/negotiate?clientProtocol=2.0&connectionData=%5B%7B%22name%22%3A%22moveshape%22%7D%5D', (res) => {
       res.on('data', (chunk) => {
         data += chunk;
       });
@@ -53,7 +53,7 @@ function getLinesStatus() {
   return getLinesConnection()
     .then((connection) => {
       return new Promise((resolve) => {
-        const req = https.request(`https://www.metrovias.com.ar/estadolineas/signalr/connect?transport=serverSentEvents&clientProtocol=2.0&connectionData=%5B%7B%22name%22%3A%22moveshape%22%7D%5D&tid=7&connectionToken=${encodeURIComponent(connection.ConnectionToken)}`, (res) => {
+        const req = https.request(`https://aplicacioneswp.metrovias.com.ar/estadolineas/signalr/connect?transport=serverSentEvents&clientProtocol=2.0&connectionData=%5B%7B%22name%22%3A%22moveshape%22%7D%5D&tid=7&connectionToken=${encodeURIComponent(connection.ConnectionToken)}`, (res) => {
           res.on('data', (chunk) => {
             const data = chunk.toString();
             if (data.includes('"M":[{')) {

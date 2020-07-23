@@ -61,7 +61,7 @@ if (cluster.isMaster) {
     cluster.fork();
   });
 } else {
-  app.listen(port, () => {
+  app.listen(port, '0.0.0.0', () => {
     console.log(`App listening on port ${port}.`);
   });
 }

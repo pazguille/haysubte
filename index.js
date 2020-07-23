@@ -2,8 +2,8 @@
  * Module dependencies
  */
 const express = require('express');
-// const cluster = require('cluster');
-// const numCPUs = require('os').cpus().length;
+const cluster = require('cluster');
+const numCPUs = require('os').cpus().length;
 const compression = require('compression');
 const helmet = require('helmet');
 const hpp = require('hpp');
@@ -38,32 +38,28 @@ app.use('/api', api);
  */
 app.use('/', pages);
 
-app.listen(config.server.port, () => {
-  console.log(`App listening on port ${config.server.port}.`);
-});
+/**
+ * Cluster
+ */
+if (cluster.isMaster) {
+  for (let i = 0; i < numCPUs; i += 1) {
+    cluster.fork();
+  }
 
-// /**
-//  * Cluster
-//  */
-// if (cluster.isMaster) {
-//   for (let i = 0; i < numCPUs; i += 1) {
-//     cluster.fork();
-//   }
+  cluster.on('online', (worker) => {
+    console.log(`Worker ${worker.process.pid} is online`);
+  });
 
-//   cluster.on('online', (worker) => {
-//     console.log(`Worker ${worker.process.pid} is online`);
-//   });
-
-//   cluster.on('exit', (worker) => {
-//     console.log(`Worker ${worker.process.pid} died`);
-//     console.log('Starting a new worker');
-//     cluster.fork();
-//   });
-// } else {
-//   app.listen(config.server.port, () => {
-//     console.log(`App listening on port ${config.server.port}.`);
-//   });
-// }
+  cluster.on('exit', (worker) => {
+    console.log(`Worker ${worker.process.pid} died`);
+    console.log('Starting a new worker');
+    cluster.fork();
+  });
+} else {
+  app.listen(config.server.port, () => {
+    console.log(`App listening on port ${config.server.port}.`);
+  });
+}
 
 /**
  * Handle unhandled exceptions

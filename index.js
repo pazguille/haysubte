@@ -17,6 +17,11 @@ const pages = require('./app');
 const app = express();
 
 /**
+ * Set express trust proxy
+ */
+app.set('trust proxy', true);
+
+/**
  * Set static directory
  */
 app.use(express.static(__dirname + '/public'));

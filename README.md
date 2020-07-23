@@ -2,8 +2,8 @@
 
 > 🚊 Web App para ver el Estado del Subte.
 
-- Web App: https://haysubte.now.sh
-- Servicio: https://haysubte.now.sh/api
+- Web App: https://haysubte.herokuapp.com/
+- Servicio: https://haysubte.herokuapp.com//api
 
 # Screenshots
 

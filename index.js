@@ -34,6 +34,11 @@ app.use(helmet());
 app.use(hpp());
 
 /**
+ * Ping route
+ */
+app.get('/ping', (req, res) => res.send('Pong'));
+
+/**
  * Add router
  */
 app.use('/api', api);

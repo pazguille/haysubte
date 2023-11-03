@@ -2,8 +2,8 @@
 
 > 🚊 Web App para ver el Estado del Subte.
 
-- Web App: https://haysubte.herokuapp.com/
-- Servicio: https://haysubte.herokuapp.com//api
+- Web App: https://haysubte.fly.dev/
+- Servicio: https://haysubte.fly.dev/api
 
 # Screenshots
 

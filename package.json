@@ -4,7 +4,7 @@
   "description": "PWA para ver el estado del Subte.",
   "main": "index.js",
   "scripts": {
-    "start-dev": "NODE_ENV=development nodemon ./index.js",
+    "dev": "NODE_ENV=development nodemon ./index.js",
     "start": "NODE_ENV=production node ./index.js"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "pug": "2.0.0-rc.1"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "0.4.10",
     "eslint": "3.19.0",
     "eslint-config-airbnb-base": "11.1.3",
     "eslint-plugin-import": "2.2.0",
